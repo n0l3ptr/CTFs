@@ -1,0 +1,67 @@
+local_190 = arv[]
+local_168 = argv[1][0:4] = flag input first 4 chars = "ABCD"
+local_158 = argv[1][3:9] = flag input 4th char on for a total of 6 bytes "DEFGHI"
+local_160 = argv[1][8:12] = "IJKL" 
+local_170 = string_to_base16_long(local_168)
+local_16c = string_to_base16_long(local_160) this must be less than local_170
+
+this should be the flag = 69fc8b9b1cdfe47e6b51a6804fc1dbddba1ea1d9
+
+
+local_150 = 0x4024df(local_168)
+
+
+//This is the strings that are copied in fucn.00402202 IV = 
+gdb-peda$ x/10xg $rax
+0x7fffffffd590:	0xefcdab8967452301	0x1032547698badcfe
+0x7fffffffd5a0:	0x00000000c3d2e1f0	0x0000000000000000
+
+0x7fffffffd590:	0x01	0x23	0x45	0x67	0x89	0xab	0xcd	0xef
+0x7fffffffd598:	0xfe	0xdc	0xba	0x98	0x76	0x54	0x32	0x10
+0x7fffffffd5a0:	0xf0	0xe1	0xd2	0xc3	0x00	0x00	0x00	0x00
+
+gdb-peda$ x/5xw $rax
+0x7fffffffd590:	0x67452301	0xefcdab89	0x98badcfe	0x10325476
+0x7fffffffd5a0:	0xc3d2e1f0
+
+
+After 0x4024df we have a mutated "key" based on the input to 0x4024df
+gdb-peda$ x/3xg  0x00007fffffffd650
+0x7fffffffd650:	0xc8f36785c8852ffb	0x2d64547c9c799bce
+0x7fffffffd660:	0x00000000f6417b0c
+
+
+local_110 = 0x4024df(local_158)
+
+
+local_130 = 0x4024df(local_160)
+
+local_d0 = string hex of local_150 size is 0x13
+local_a0 = string hec of local_130 size is 0x13
+local_70 = string hex of local_110 size is 0x13
+
+local_70 must equal 69fc8b9b1cdfe47e6b51a6804fc1dbddba1ea1d9
+
+middle 6 bytes is string hex of 0x4024df(local_158)
+
+flag = 
+ASIS{hhhh????hhhh}
+Last 4 bytes is less than first four bytes
+output of 0x4024df() for first four byte and last 4 bytes is equal to eachother
+Output of middle six bytes is equal to 69fc8b9b1cdfe47e6b51a6804fc1dbddba1ea1d9
+
+0x4024df(x) = sha1(x).hexdigest()
+
+
+Password:
+57d9:-*)b53a   
+	
+
+
+
+
+
+
+
+
+
