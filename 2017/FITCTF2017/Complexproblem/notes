@@ -1,0 +1,22 @@
+0xc4111a - call ebp
+#0x00c42000 - potentially main
+0x80487c3 - _start
+Main - 0x80488e4
+
+print 0x804f140
+
+size : 0x80
+fgets = 0x804ece0
+
+func_write -  0x804e8f0
+write = 0x8080590
+
+to get to main
+break *0xc4111c
+r
+break *0x00c420c9
+c
+break *0x80487c3
+c
+break *0x80488e4
+c
