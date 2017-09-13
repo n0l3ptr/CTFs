@@ -1,1 +1,0 @@
-# TokyoWesternsCTF Write-ups
